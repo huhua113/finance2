@@ -1,5 +1,5 @@
 
-import { initializeApp } from 'firebase/app';
+import * as firebaseApp from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 // 在 Netlify UI 中设置这些环境变量
@@ -14,7 +14,8 @@ const firebaseConfig = {
 };
 
 // 初始化Firebase
-const app = initializeApp(firebaseConfig);
+// FIX: Changed from named import to namespace import to address module resolution error.
+const app = firebaseApp.initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export { db };
